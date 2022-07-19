@@ -1,0 +1,56 @@
+.welcome-bgrd {
+  background-color: yellow;
+  height: 75vh;
+}
+
+.welcome-bgrd .nav-header-container {
+  height: 15%;
+  display: flex;
+  align-items: center;
+}
+
+.welcome-bgrd .nav-header-container .nav-header {
+  width: 100%;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.welcome-bgrd .nav-header-container .nav-header .link {
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-right: 1.5rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.welcome-bgrd .welcome-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.welcome-bgrd .welcome-container .welcome-text {
+  margin: 0;
+  font-size: 24rem;
+  color: #fff;
+}
+
+.empty-img-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0rem;
+}
+
+.books-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}

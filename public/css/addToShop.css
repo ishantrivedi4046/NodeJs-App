@@ -1,0 +1,25 @@
+.add-product-form {
+  height: 100vh;
+}
+
+.product-form {
+  width: 20rem;
+  max-width: 90%;
+  margin: auto;
+}
+
+.form-control {
+  margin: 1rem 0;
+}
+
+label {
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+.add-product-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}

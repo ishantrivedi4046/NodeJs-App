@@ -1,0 +1,13 @@
+.not-found-style {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: darkblue;
+}
+
+.not-found-style img {
+  max-width: 100%;
+  height: auto;
+}

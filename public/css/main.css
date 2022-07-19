@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "kanit", sans-serif;
+}
+
+body .link_selected {
+  color: green;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-right: 1.5rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn {
+  font: inherit;
+  border: 1px solid #00695c;
+  color: #00695c;
+  background: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: #00695c;
+  color: white;
+}
+
+.card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin: 2rem;
+}
+
+.card__header,
+.card__content {
+  padding: 1rem;
+}
+
+.card__header h1,
+.card__content h1,
+.card__content h2,
+.card__content p {
+  margin: 0;
+}
+
+.card__image {
+  width: 100%;
+}
+
+.card__image img {
+  height: 12rem;
+}
+
+.card__image img {
+  width: 100%;
+}
+
+.card__actions {
+  padding: 1rem;
+  text-align: center;
+}
+
+.card__actions button,
+.card__actions a {
+  margin: 0 0.25rem;
+}
+
+.nav-header-container {
+  height: 10%;
+  display: flex;
+  background-color: yellow;
+  align-items: center;
+}
+
+.nav-header-container .nav-header {
+  width: 100%;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.nav-header-container .nav-header .link {
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-right: 1.5rem;
+  text-decoration: none;
+  cursor: pointer;
+}

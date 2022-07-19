@@ -1,0 +1,29 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Add Product To My Shop
+        link(rel="stylesheet", href="/css/addToShop.css")
+        link(rel="stylesheet", href="/css/main.css")
+    body 
+        .add-product-form
+            include ./nav.pug
+            main
+                form.product-form(action='/add-product' method='POST')
+                    .form-control
+                    label(for='title') Title
+                    input#title(type='text' name='title')
+                    .form-control
+                    label(for='imageUrl') Image URL
+                    input#imageUrl(type='text' name='imageUrl')
+                    .form-control
+                    label(for='price') Price
+                    input#price(type='number' name='price' step='0.01')
+                    .form-control
+                    label(for='description') Description
+                    textarea#description(name='description' rows='5')
+                    .add-product-btn-container
+                        button.btn(type='submit') Add Product
+            
