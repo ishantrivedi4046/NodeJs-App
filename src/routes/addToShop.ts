@@ -9,8 +9,9 @@ router.get("/add-product", (req, res, next) => {
 
 router.post("/add-product", (req, res, next) => {
   const product = new Product(req.body);
-  Product.saveProduct(product);
-  res.redirect("/");
+  Product.saveProduct(product, () => {
+    res.redirect("/");
+  });
 });
 
 export default router;

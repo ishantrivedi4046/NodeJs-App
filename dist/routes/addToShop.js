@@ -8,7 +8,8 @@ router.get("/add-product", (req, res, next) => {
 });
 router.post("/add-product", (req, res, next) => {
     const product = new Product_1.Product(req.body);
-    Product_1.Product.saveProduct(product);
-    res.redirect("/");
+    Product_1.Product.saveProduct(product, () => {
+        res.redirect("/");
+    });
 });
 exports.default = router;

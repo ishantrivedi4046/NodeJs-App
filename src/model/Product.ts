@@ -1,6 +1,6 @@
 import { uniqueId } from "lodash";
-import fs from "fs";
-import path from "path";
+import db from "../util/database";
+import { DBQueries } from "../util/dbQueryUtils";
 
 const initialState = {
   title: "",
@@ -9,13 +9,15 @@ const initialState = {
   description: "",
 };
 
-const p = path.join(__dirname, "..", "data", "products.json");
-export const getAllProducts = (cb: (products: any[]) => any) => {
-  fs.readFile(p, (err: any, fileContent: any) => {
-    if (err) {
-      cb([]);
+export const getAllProducts = (cb: (products: Array<Product>) => void) => {
+  db.execute(DBQueries.select.all()).then((result) => {
+    if (result?.length) {
+      const products: Array<Product> = ((result[0] as any) ?? []).map(
+        (value: any) => new Product(value)
+      );
+      cb(products);
     } else {
-      cb(JSON.parse(fileContent));
+      cb([]);
     }
   });
 };
@@ -54,11 +56,17 @@ export class Product {
     return this._imageUrl;
   }
 
-  static saveProduct(product: Product) {
-    getAllProducts((products = []) => {
-      products?.push(product?.json());
-      fs.writeFile(p, JSON.stringify(products), (err) => console.log(err));
-    });
+  static saveProduct(product: Product, cbOnProductSave: Function) {
+    db.execute(DBQueries.insert.singleProduct(), [
+      product.title,
+      parseFloat(product.price),
+      product.description,
+      product.url,
+    ])
+      .then((result) => {
+        cbOnProductSave();
+      })
+      .catch((e) => console.log(e));
   }
 
   json() {

@@ -5,22 +5,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Product = exports.getAllProducts = void 0;
 const lodash_1 = require("lodash");
-const fs_1 = __importDefault(require("fs"));
-const path_1 = __importDefault(require("path"));
+const database_1 = __importDefault(require("../util/database"));
+const dbQueryUtils_1 = require("../util/dbQueryUtils");
 const initialState = {
     title: "",
     imageUrl: "",
     price: "",
     description: "",
 };
-const p = path_1.default.join(__dirname, "..", "data", "products.json");
 const getAllProducts = (cb) => {
-    fs_1.default.readFile(p, (err, fileContent) => {
-        if (err) {
-            cb([]);
+    database_1.default.execute(dbQueryUtils_1.DBQueries.select.all()).then((result) => {
+        var _a;
+        if (result === null || result === void 0 ? void 0 : result.length) {
+            const products = ((_a = result[0]) !== null && _a !== void 0 ? _a : []).map((value) => new Product(value));
+            cb(products);
         }
         else {
-            cb(JSON.parse(fileContent));
+            cb([]);
         }
     });
 };
@@ -53,11 +54,17 @@ class Product {
     get url() {
         return this._imageUrl;
     }
-    static saveProduct(product) {
-        (0, exports.getAllProducts)((products = []) => {
-            products === null || products === void 0 ? void 0 : products.push(product === null || product === void 0 ? void 0 : product.json());
-            fs_1.default.writeFile(p, JSON.stringify(products), (err) => console.log(err));
-        });
+    static saveProduct(product, cbOnProductSave) {
+        database_1.default.execute(dbQueryUtils_1.DBQueries.insert.singleProduct(), [
+            product.title,
+            parseFloat(product.price),
+            product.description,
+            product.url,
+        ])
+            .then((result) => {
+            cbOnProductSave();
+        })
+            .catch((e) => console.log(e));
     }
     json() {
         return {
