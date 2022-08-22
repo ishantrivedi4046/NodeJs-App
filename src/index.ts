@@ -4,7 +4,7 @@ import notFoundRoute from "./routes/404";
 import addToShopRoute from "./routes/addToShop";
 import homeRoute from "./routes/home";
 import path from "path";
-
+import { sequelize } from "./util/database";
 const app = express();
 
 app.set("view engine", "pug");
@@ -15,4 +15,12 @@ app.use(addToShopRoute);
 app.use(homeRoute);
 app.use(notFoundRoute);
 
-app.listen(5000);
+sequelize
+  .sync()
+  .then((r) => {
+    app.listen(5000);
+    console.log("Successfully Started the app!");
+  })
+  .catch((e) => {
+    console.log(e);
+  });

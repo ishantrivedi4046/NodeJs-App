@@ -1,14 +1,8 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const mysql2_1 = __importDefault(require("mysql2"));
-const mysqlPool = mysql2_1.default.createPool({
+exports.sequelize = void 0;
+const sequelize_1 = require("sequelize");
+exports.sequelize = new sequelize_1.Sequelize("node-complete", "root", "Astrocoder8046@786", {
     host: "localhost",
-    user: "root",
-    database: "node-complete",
-    password: "Astrocoder8046@786",
+    dialect: "mysql",
 });
-const db = mysqlPool.promise();
-exports.default = db;

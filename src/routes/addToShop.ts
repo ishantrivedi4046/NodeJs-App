@@ -8,10 +8,19 @@ router.get("/add-product", (req, res, next) => {
 });
 
 router.post("/add-product", (req, res, next) => {
-  const product = new Product(req.body);
-  Product.saveProduct(product, () => {
-    res.redirect("/");
-  });
+  Product.create({
+    title: req.body.title,
+    description: req.body.description,
+    price: parseFloat(req.body.price),
+    imageUrl: req.body.imageUrl,
+  })
+    .then((r) => {
+      res.redirect("/");
+      console.log("Successfully Inserted An Product!");
+    })
+    .catch((e) => {
+      console.log("Failed To Inserted An Product!");
+    });
 });
 
 export default router;
