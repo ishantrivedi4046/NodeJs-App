@@ -11,7 +11,9 @@ router.get("/", (req, res, next) => {
         if (products.length) {
             allProducts = JSON.parse(JSON.stringify(products, null, 2));
         }
-        res.render("home", { products: allProducts });
+        res.render("home", {
+            products: allProducts,
+        });
     });
 });
 exports.default = router;

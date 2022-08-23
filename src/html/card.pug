@@ -12,9 +12,9 @@ html(lang="en")
             header.card__header
                 h1.product__title #{product.title} 
                     .card__image
-                        img(src=product.url alt="" )
+                        img(src=product.imageUrl alt="" )
                         .card__content
                             h2.product__price #{product.price}
                             p.product__description #{product.description}
                         .card__actions
-                            button.btn Add to Cart 
+                            a.btn(href=`/details?book_id=${product.id}`) Details

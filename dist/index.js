@@ -8,6 +8,7 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const _404_1 = __importDefault(require("./routes/404"));
 const addToShop_1 = __importDefault(require("./routes/addToShop"));
 const home_1 = __importDefault(require("./routes/home"));
+const details_1 = __importDefault(require("./routes/details"));
 const path_1 = __importDefault(require("path"));
 const database_1 = require("./util/database");
 const app = (0, express_1.default)();
@@ -16,6 +17,7 @@ app.set("views", path_1.default.join(__dirname, "..", "src", "html"));
 app.use(express_1.default.static(path_1.default.join(__dirname, "..", "public")));
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use(addToShop_1.default);
+app.use(details_1.default);
 app.use(home_1.default);
 app.use(_404_1.default);
 database_1.sequelize
